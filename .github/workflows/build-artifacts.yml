@@ -3,20 +3,6 @@ name: Build
 on:
   push:
     branches: [ master ]
-    paths:
-      - 'package-lock.json'
-      - 'src/**/*'
-      - 'preview-src/**/*'
-      - '.github/actions/build-setup/**/*'
-      - '.github/workflows/build-artifacts.yml'
-  pull_request:
-    branches: [ master ]
-    paths:
-      - 'package-lock.json'
-      - 'src/**/*'
-      - 'preview-src/**/*'
-      - '.github/actions/build-setup/**/*'
-      - '.github/workflows/build-artifacts.yml'
 
 jobs:
   build:
@@ -34,11 +20,11 @@ jobs:
           name: ui-bundle-${{github.sha}}
           path: build/ui-bundle.zip
           retention-days: 7
-      - name: Build preview
-        run: gulp preview:build
-      - name: Upload preview
-        uses: actions/upload-artifact@v2
-        with:
-          name: ui-preview-${{github.sha}}
-          path: public
-          retention-days: 7
+#      - name: Build preview
+#        run: gulp preview:build
+#      - name: Upload preview
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: ui-preview-${{github.sha}}
+#          path: public
+#          retention-days: 7
