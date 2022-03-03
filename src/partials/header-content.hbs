@@ -22,7 +22,7 @@
       {{/unless}}
     </div>
 
-    <div class="navbar-end" id="search-container">
+    <div class="navbar-end" id="search-container" class="foo">
       {{#unless site.keys.nonProduction}}
       {{#unless page.attributes.hide-search-bar }}
       <div class="navbar-item search-item hide-for-print">
@@ -41,6 +41,25 @@
           </label>
         </div>
       </div>
+
+
+      <div class="container-ml">
+
+        <form id="singular-form-ml">
+
+          <button class="shown-ml" type="button" id="trigger">Notify me</button>
+
+          <div id="input-container-ml">
+            <input type="text" placeholder="E-mail">
+            <button type="button">Send</button>
+          </div>
+
+          <div id="success-ml">Thank you!</div>
+
+        </form>
+
+      </div>
+
 
       <button class="navbar-burger" data-target="topbar-nav-mobile">
         <span></span>

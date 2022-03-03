@@ -8,5 +8,5 @@ module.exports = (files) => (done) =>
     .src(files)
     .pipe(eslint())
     .pipe(eslint.format())
-    .pipe(eslint.failAfterError())
+    // .pipe(eslint.failAfterError())
     .on('error', done)
