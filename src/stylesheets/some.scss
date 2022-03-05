@@ -12,18 +12,21 @@
 //     background-color: var(--accent-color);
 // }
 
+
 // body,
 #singular-form-ml button,
 .container-ml>#singular-form-ml>#input-container-ml>input {
-    font-size: 2rem;
-    font-family: 'Montserrat', sans-serif;
+    // font-size: 2rem;   // controls the size of the fond on the email list. Both the input email as well as instructions.
+    font-family: inherit;
     font-weight: bold;
 }
 
 .container-ml {
+    display: flex;
+    font-family: inherit;
     width: 19rem;
-    height: 5rem;
-    padding: 10px;
+    // height: 5rem;
+    padding: 0.5rem;
     background-color: var(--main-color);
     text-align: center;
     border-radius: 3rem;
