@@ -4,6 +4,7 @@
 function toDarkTheme (resolve) {
   localStorage.setItem('theme', 'dark')
   document.querySelector('html').setAttribute('data-theme', 'dark')
+  set_giscus_theme('dark')
 
   // Update highlight js theme
   enableHightLightDarkTheme(true)
@@ -14,6 +15,7 @@ function toDarkTheme (resolve) {
 function toLightTheme (resolve) {
   localStorage.setItem('theme', 'light')
   document.querySelector('html').setAttribute('data-theme', 'light')
+  set_giscus_theme('light')
 
   // Update highlight js theme
   enableHightLightDarkTheme(false)
@@ -50,6 +52,16 @@ function performThemeSwitch (checkbox, switchBall) {
       switchBall.innerHTML = ''
     })
   }, 100)
+}
+
+
+function set_giscus_theme(theme) {
+  let comment_form = document.querySelector("iframe.giscus-frame");
+  if (comment_form != null) {
+    comment_form.contentWindow.postMessage({
+      giscus: { setConfig: { theme: theme } }
+    }, "https://giscus.app")
+  }
 }
 
 // create the loader div
