@@ -16,7 +16,7 @@
         switch (e.target) {
             case sf.trigger:
                 console.log('case trigger');
-                // sf.container.style.width = '37rem'  // Size after clicking to provide email
+                sf.container.style.width = '20rem'  // Size after clicking to provide email
                 e.target.classList.remove('shown-ml');
                 sf.input.classList.add('shown-ml');
                 sf.submitButton.classList.add('shown-ml');
