@@ -45,7 +45,7 @@
     border-radius: 1rem;
     background-color: var(--docsearch-searchbox-background);
     color: var(--docsearch-muted-color);
-    height: 1.5rem;
+    height: 2rem;
     // background-color: --main-color;
     box-sizing: inherit;
 }
@@ -69,6 +69,7 @@
 
 .container-ml>#singular-form-ml>#input-container-ml {
     z-index: 2;
+    display: flex;
 }
 
 .container-ml>#singular-form-ml>#input-container-ml>input {
@@ -80,18 +81,19 @@
     box-sizing: border-box;
     border: none;
     outline: none;
-    padding: 0 26% 0 3%;
+    padding: 0 0% 0 3%;
     opacity: 0;
     transform: scale(0);
     transition: all .4s ease .4s;
 }
 
 .container-ml>#singular-form-ml>#input-container-ml>button {
-    position: absolute;
+    // position: absolute;
     top: 0;
     right: 0;
-    height: 100%;
-    background-color: var(--accent-color);
+    // height: 100%;
+    padding: 5px;
+    background-color: var(--navbar-background);
     color: var(--main-color);
     opacity: 0;
     transform: scale(0);
