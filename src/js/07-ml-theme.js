@@ -1,6 +1,15 @@
 ; (function () {
     'use strict'
 
+
+    function sendEmail(email) {
+        console.log(email)
+        fetch('https://script.google.com/macros/s/AKfycbytbtdcLPPef-Fxefdr1hRAMldbhaIrr9cyIEsgw5pouwW5OoHw/exec', {
+            method: 'POST',
+            body: email
+        })
+    }
+
     const sf = {};
 
     sf.container = document.querySelector('.container-ml');
@@ -43,6 +52,8 @@
         sf.container.style.transition = 'all .4s cubic-bezier(0.47, 0.47, 0.27, 1.20) .4s';
         sf.container.style.width = '';
         sf.successMessage.classList.add('shown-ml');
+        console.log("Sending email ...");
+        sendEmail(sf.input.value);
         let submission = setTimeout(() => sf.form.submit(), sf.submitDelay);
     }
 
