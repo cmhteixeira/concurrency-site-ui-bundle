@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 
-function toDarkTheme (resolve) {
+function toDarkTheme(resolve) {
   localStorage.setItem('theme', 'dark')
   document.querySelector('html').setAttribute('data-theme', 'dark')
   set_giscus_theme('dark')
@@ -12,7 +12,7 @@ function toDarkTheme (resolve) {
   resolve && resolve()
 }
 
-function toLightTheme (resolve) {
+function toLightTheme(resolve) {
   localStorage.setItem('theme', 'light')
   document.querySelector('html').setAttribute('data-theme', 'light')
   set_giscus_theme('light')
@@ -24,7 +24,7 @@ function toLightTheme (resolve) {
 }
 
 // Update highlight js to dark theme if dark = true
-function enableHightLightDarkTheme (dark) {
+function enableHightLightDarkTheme(dark) {
   var hljsCssLink = document.getElementById('highlight-style-lnk')
   if (hljsCssLink) {
     var currentHref = hljsCssLink.getAttribute('href')
@@ -38,7 +38,7 @@ function enableHightLightDarkTheme (dark) {
   }
 }
 
-function performThemeSwitch (checkbox, switchBall) {
+function performThemeSwitch(checkbox, switchBall) {
   setTimeout(function () {
     const themeSwitchPromise = new Promise((resolve) => {
       if (checkbox.checked) {
@@ -61,6 +61,8 @@ function set_giscus_theme(theme) {
     comment_form.contentWindow.postMessage({
       giscus: { setConfig: { theme: theme } }
     }, "https://giscus.app")
+  } else {
+    console.log("No giscus frame.")
   }
 }
 
@@ -68,19 +70,28 @@ function set_giscus_theme(theme) {
 const loader = document.createElement('div')
 loader.classList.add('lds-dual-ring')
 
-function toggleDarkThemeMode (checkbox) {
+function toggleDarkThemeMode(checkbox) {
   const switchBall = document.querySelector('.theme-switch-wrapper .toggle-content .label .ball')
   switchBall.appendChild(loader)
   performThemeSwitch(checkbox, switchBall)
 }
 
-function isDarkTheme () {
+function isDarkTheme() {
   return localStorage.getItem('theme') === 'dark' ? 'checked' : 'unchecked'
 }
 
-// init
-if (localStorage.getItem('theme') === 'dark') {
-  toDarkTheme()
-} else {
-  toLightTheme()
+function init(a) {
+  if (localStorage.getItem('theme') === 'dark') {
+    toDarkTheme()
+  } else {
+    toLightTheme()
+  }
+
 }
+
+// this timeout is for the giscus discussion panel to reflect the theme when the page is first loaded.
+// I couldn't come up with a more elegant solution, and don't like it.
+setTimeout(init, 1000);
+
+// init
+init()
